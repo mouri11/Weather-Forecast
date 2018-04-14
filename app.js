@@ -10,14 +10,22 @@ $(document).ready(function() {
 	$("#weather").on("click", "#temp-unit",function() {
 		units = !units;
 		var temp = Number($("#temp").text());
+        var str;
 
-    	if (units && $("#temp-unit").text() ===  "\xb0F")      temp = (temp - 32) / 9 * 5;
-    	else if (!units && $("#temp-unit").text() === "\xb0C") temp = (temp * 9/5) + 32;
+    	if (units && $("#temp-unit").text() ===  "\xb0F") {
+            temp = (temp - 32) / 9 * 5;
+            str = "Click to change to Fahreinheit"
+        }
+    	else if (!units && $("#temp-unit").text() === "\xb0C") {
+            temp = (temp * 9/5) + 32;
+            str = "Click to change to Celsius"
+        }
     	else temp = temp;
     	
     	var unit = units ? "&degC" : "&degF";
     	$("#temp").html(temp);
     	$("#temp-unit").html(unit);
+        $("#temp-unit").attr("title", str);
     });
 });
 
@@ -25,7 +33,7 @@ function getWeather(city) {
 	$.getJSON("https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+apiKey+"&units=metric", function(data) {
 
     	$("#weather").append("<tr><td>City</td><td>"+ data.name +"</td></tr>");
-    	$("#weather").append("<tr><td>Temperature</td><td><span id='temp'>"+ data.main.temp +"</span><span id='temp-unit'>&degC</span></td></tr>");
+    	$("#weather").append("<tr><td>Temperature</td><td><span id='temp'>"+ data.main.temp +"</span><span id='temp-unit' title='Click to change to Fahreinheit'>&degC</span></td></tr>");
     	$("#weather").append("<tr><td>Wind Speed</td><td>"+ data.wind.speed +" m/s</td></tr>");
     	$("#weather").append("<tr><td>Pressure</td><td>"+ data.main.pressure +" mb</td></tr>");
     	$("#weather").append("<tr><td>Humidity</td><td>"+ data.main.humidity +" %</td></tr>");
