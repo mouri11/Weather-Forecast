@@ -11,7 +11,7 @@ $(document).ready(function() {
 		units = !units;
 		var temp = Number($("#temp").text());
 
-    	if (units && $("#temp-unit").text() ===  "&degF")      temp = (temp - 32) / 9 * 5;
+    	if (units && $("#temp-unit").text() ===  "\xb0F")      temp = (temp - 32) / 9 * 5;
     	else if (!units && $("#temp-unit").text() === "\xb0C") temp = (temp * 9/5) + 32;
     	else temp = temp;
     	
