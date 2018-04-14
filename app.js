@@ -30,12 +30,12 @@ function getWeather(city) {
     	$("#weather").append("<tr><td>Pressure</td><td>"+ data.main.pressure +" mb</td></tr>");
     	$("#weather").append("<tr><td>Humidity</td><td>"+ data.main.humidity +" %</td></tr>");
 
-    	if (data.weather.id < 300)	{img = "http://openweathermap.org/img/w/11d.png" ; color = "#9966ff";}
-    	else if (data.weather.id < 500) {img = "http://openweathermap.org/img/w/09d.png" ; color = "#3399ff"}
-    	else if (data.weather.id < 600) {img = "http://openweathermap.org/img/w/10d.png" ; color = "#66ccff"}
-    	else if (data.weather.id < 700) {img = "http://openweathermap.org/img/w/13d.png" ; color = "#ccffff"}
-    	else if (data.weather.id < 800) {img = "http://openweathermap.org/img/w/50d.png" ; color = "#ff8000"}
-    	else {img = "http://openweathermap.org/img/w/01d.png"; color = "#ccffff"}
+    	if (data.weather.id < 300)	{img = "https://openweathermap.org/img/w/11d.png" ; color = "#9966ff";}
+    	else if (data.weather.id < 500) {img = "https://openweathermap.org/img/w/09d.png" ; color = "#3399ff"}
+    	else if (data.weather.id < 600) {img = "https://openweathermap.org/img/w/10d.png" ; color = "#66ccff"}
+    	else if (data.weather.id < 700) {img = "https://openweathermap.org/img/w/13d.png" ; color = "#ccffff"}
+    	else if (data.weather.id < 800) {img = "https://openweathermap.org/img/w/50d.png" ; color = "#ff8000"}
+    	else {img = "https://openweathermap.org/img/w/01d.png"; color = "#ccffff"}
 
     	$("#weather-icon").attr("src", img);
     	$("body").css("background-color", color);
