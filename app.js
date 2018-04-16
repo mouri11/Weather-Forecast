@@ -40,7 +40,7 @@ $(document).ready(function() {
     });
 });
 
-function getWeather(city) {
+function getWeather(lat, lon) {
 	$.getJSON("https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid="+apiKey+"&units=metric", function(data) {
 
     	$("#weather").append("<tr><td>City</td><td>"+ data.name +"</td></tr>");
