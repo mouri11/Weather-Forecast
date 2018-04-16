@@ -1,10 +1,20 @@
-var city,img,color, temp, units = true;
-var apiKey = "5dd765a29b95b2e058dfd9f33a1dbd0d";
+var lat,lon,img,color, temp, units = true;
+var apiKey = "fd41276d1d494f6b585b555327a912d0";
 
 $(document).ready(function() {	
-	$.getJSON("http://ip-api.com/json/?callback=?", function(json) {
-	    city = json.city;
-	    getWeather(city);	    
+	/*if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log(JSON.stringify(position));
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+            getWeather(lat,lon);
+        });
+    }*/
+
+    $.getJSON("http://ip-api.com/json/?callback=?", function(json) {
+	    lat = json.lat;
+        lon = json.lon;
+	    getWeather(lat,lon);	    
 	});
 
 	$("#weather").on("click", "#temp-unit",function() {
@@ -21,6 +31,7 @@ $(document).ready(function() {
             str = "Click to change to Celsius"
         }
     	else temp = temp;
+        temp = Math.round(temp, 2);
     	
     	var unit = units ? "&degC" : "&degF";
     	$("#temp").html(temp);
@@ -30,7 +41,7 @@ $(document).ready(function() {
 });
 
 function getWeather(city) {
-	$.getJSON("https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+apiKey+"&units=metric", function(data) {
+	$.getJSON("https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid="+apiKey+"&units=metric", function(data) {
 
     	$("#weather").append("<tr><td>City</td><td>"+ data.name +"</td></tr>");
     	$("#weather").append("<tr><td>Temperature</td><td><span id='temp'>"+ data.main.temp +"</span><span id='temp-unit' title='Click to change to Fahreinheit'>&degC</span></td></tr>");
