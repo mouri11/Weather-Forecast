@@ -1,16 +1,7 @@
 var lat,lon,img,color, temp, units = true;
 var apiKey = "fd41276d1d494f6b585b555327a912d0";
 
-$(document).ready(function() {	
-	/*if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            console.log(JSON.stringify(position));
-            lat = position.coords.latitude;
-            lon = position.coords.longitude;
-            getWeather(lat,lon);
-        });
-    }*/
-
+$(document).ready(function() {
     $.getJSON("http://ip-api.com/json/?callback=?", function(json) {
 	    lat = json.lat;
         lon = json.lon;
